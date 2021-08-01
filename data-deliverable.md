@@ -1,30 +1,26 @@
-# Data Deliverable Report - al-gore-ithms
+# Data Deliverable Report
 
-**Team members**: David Moon, Livia Gimenes, Raymond Dai, Truman Cunningham
+### Data Collection Descripton
+We used web scraping to get our corpus of State of the Union Addresses (STATUA), and we used CSV parsing to get our annual budget data. Using UC Santa Barbara's Presidency Project, we were able to scrape every address from Carter onwards and store them into Pandas dataframes for a total of 242 speeches from 43 presidents. These speeches were stored, for now, as raw text for further analysis in a Pandas dataframe. Using the budget authority table from the OMB, we stored spending by department into a dataframe with 36 U.S. departments over 50 years. These tables were joined together by year such that each year had an associated SOTUA and budget distribution.  
 
-## Step 1
+### Data Commentary
+We consider our data to be reasonably reputable. The Presidency Project is a non-partisan project in partnership with the University of Santa Barbara and it not only includes speech transcriptions but also includes other information on presidents. The State of the Union is a highly publicized event, and we find it highly unlikely any mistakes would be published. In addition, the historical budget CSV is from the Office of Management and Budget, which is the primary source of budget data for the executive branch.
 
-1. Your data collection description goes here (at most around 200 words)
+### Data Schema Description
+Currently, the data is organized into pandas data frames. The lightly-processed text of the state of the union is stored along with the year the speech was delivered and the president delivering the speech (this will be transformed into a BOW table later on). This is coupled with another data frame containing the Department of Health and Human Services budget authority each year, shown as a percentage of the total budget starting with the Carter administration and ending at the last year of the Trump administration. In both these data frames, the year serves as the primary key as well as the foreign key to the other data frame.
 
-2. Your data commentary goes here (at most around 200 words)
+### Observations of Data (Prior to Cleaning)
+Because of how relatively simple the data is, the data was relatively clean. The speeches were neatly stored onto HTML webpages, and the budget was stored in CSVs. As a result, there isn’t much to note about the speeches before cleaning, besides the fact that there are stop words and a new speaker is noted in brackets. We also note that the HHS has steadily grown in terms of percentage of budget, likely due to the aging baby boomer generation requiring more medicare spending. Finally, we note something unique about Carter: he was the last president to really use written SOTUA, meaning he has two speeches each year. For now, we kept these speeches in the database, but in the future we may want to remove them so the data doesn’t favor Carter's agenda by doubling his representation.
 
-## Step 2
 
-Your data schema description goes here (at most around 300 words)
+### Data Cleaning Process and Outcomes
+First, projected budgets for future years were dropped, as obviously there hasn’t been a State of the Union for those years yet. The cleaning involved removing a few words from the beginning of each SOTUA due to the format of the webpage, but otherwise the dataset was already clean. We did have to normalize the speeches. This involved tokenizing the raw speech to a list of words, standardizing capitalization to lowercase, filtering out punctuation and stop words like “the” and “a”, and lemmatising each token. We also removed Biden from the dataset because Biden only had one SOTUA. This meant that Biden could only fit into either the training or test data set, so we decided it would be best to remove him. 
 
-## Step 3
+### Train-test Split
+If we would do a 80/20 split for train and test our total speeches we would need 9.4 speeches. We have decided not to split up any speeches so we have rounded 9.4 to 10. So our test data is representative of our overall data, we have decided that each president should have at least one speech in the test data. 7 out 10 data points in the test data correspond to each president, 3 are selected at random and have no overlap with already existing points.
 
-1. Your observation of the data prior to cleaning the data goes here (limit: 250 words)
-2. Your data cleaning process and outcome goes here (at most around 250 words)
+### Socio-historical Context and Impact Report
+Our dataset represents US presidents since Jimmy Carter, which is an extremely limited group of people. As such, the demographics of our dataset are highly limited: these are the words of older, educated, Christian, straight, cisgender, and upper-class men. However, we would argue that the results of our analysis would theoretically have implications for US policymaking at large, as we are examining how rhetorical speech actually translates into budget changes. The Department of Health and Human services is particularly important for older populations and people experiencing poverty due to medicare and Medicaid, respectively. Still, the nation’s spending on healthcare is a significant issue for all Americans, which was made abundantly clear in recent years. 
 
-## Step 4
+We see very little in terms of privacy violations with our projects. The transcripts of presidential speeches as well as federal budget data are and should be open-source. The largest potential problem for this project to run into is interpreting the results too broadly; the State of the Union is—by design—a very filtered, noncontroversial speech. How a president acts and speaks during this speech is not reflective of their actions on the campaign trail or in office, and budget spent is not necessarily indicative of priorities.
 
-Your train-test data descriptions goes here (at most around 250 words)
-
-## Step 5
-
-Your socio-historical context & impact report goes here
-
-## Step 6
-
-Your team report goes here

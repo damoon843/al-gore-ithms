@@ -11,5 +11,5 @@ The following questions were asked during the exploratory analysis phase:
 * Is there a difference in the distributions of the proportion of health-reated words (for Republicans and Democrats) between a president's 1st, 2nd, 3rd, and 4th SOTUA? Ran Friedman's test on Republican and Democrat speeches.
 * Is there a relationship between frequency of health-related words and percentage spend on the health department? Ran linear regressions by clusters (pre-Clinton and post-Clinton) and for each president.
 
-For results of these analyses, please refer to [the Collab notebook](/final_project.ipynb). For the final presentation, the group chose to focus on (method 1) and (method 2). Final conclusions are shown in the [final presentation slides]().
+For results of these analyses, please refer to [the Collab notebook](/final_project.ipynb). For the final presentation, the group chose to focus on (method 1) and (method 2). Final conclusions are shown in the [final presentation slides](final-presentation.pdf).
 
